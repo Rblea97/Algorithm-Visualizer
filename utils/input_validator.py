@@ -1,11 +1,6 @@
 import re
 from typing import List, Optional, Tuple
-import sys
-import os
-
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
-from utils.constants import VALUE_MIN, VALUE_MAX, ARRAY_SIZE_MAX, ERROR_MESSAGES
+from .constants import VALUE_MIN, VALUE_MAX, ARRAY_SIZE_MAX, ERROR_MESSAGES
 
 
 class InputValidator:
