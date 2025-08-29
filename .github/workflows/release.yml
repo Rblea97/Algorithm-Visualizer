@@ -1,0 +1,59 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  create-release:
+    runs-on: windows-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python 3.11
+      uses: actions/setup-python@v4
+      with:
+        python-version: "3.11"
+    
+    - name: Install PyInstaller
+      run: |
+        python -m pip install --upgrade pip
+        pip install pyinstaller
+        
+    - name: Build Windows executable
+      run: |
+        pyinstaller Algorithm-Visualizer.spec
+        
+    - name: Generate checksum
+      run: |
+        certutil -hashfile "dist/Algorithm-Visualizer.exe" SHA256 > "dist/Algorithm-Visualizer.exe.sha256"
+        
+    - name: Create Release
+      uses: softprops/action-gh-release@v1
+      with:
+        files: |
+          dist/Algorithm-Visualizer.exe
+          dist/Algorithm-Visualizer.exe.sha256
+        body: |
+          ## 🚀 Algorithm Visualizer ${{ github.ref_name }}
+          
+          ### Downloads
+          - **Windows Executable**: `Algorithm-Visualizer.exe` (no Python installation required)
+          - **SHA256 Checksum**: `Algorithm-Visualizer.exe.sha256` (for verification)
+          - **Source Code**: Use the source code archives below
+          
+          ### Quick Start
+          **Windows**: Download and run the .exe file  
+          **Source**: Requires Python 3.8+ - run `python main.py`
+          
+          ### What's New
+          Interactive sorting algorithm visualizer with smooth animations and educational content.
+          
+          - 5 sorting algorithms with step-by-step visualization
+          - Real-time controls and speed adjustment
+          - Educational complexity information
+          - Professional three-panel interface
+          
+          Perfect for computer science education and algorithm learning!
