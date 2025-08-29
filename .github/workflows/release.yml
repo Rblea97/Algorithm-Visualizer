@@ -39,21 +39,28 @@ jobs:
         body: |
           ## 🚀 Algorithm Visualizer ${{ github.ref_name }}
           
-          ### Downloads
-          - **Windows Executable**: `Algorithm-Visualizer.exe` (no Python installation required)
-          - **SHA256 Checksum**: `Algorithm-Visualizer.exe.sha256` (for verification)
-          - **Source Code**: Use the source code archives below
+          ### 📥 How to Download & Run
           
-          ### Quick Start
-          **Windows**: Download and run the .exe file  
-          **Source**: Requires Python 3.8+ - run `python main.py`
+          **For Windows Users (Recommended):**
+          1. **Download** `Algorithm-Visualizer.exe` below ⬇️
+          2. **Save** the file to your computer (Downloads folder is fine)
+          3. **Double-click** the .exe file to run immediately
+          4. **No installation needed** - it runs directly!
           
-          ### What's New
-          Interactive sorting algorithm visualizer with smooth animations and educational content.
+          **For Developers:**
+          - Download the source code zip
+          - Requires Python 3.8+ - run `python main.py`
           
-          - 5 sorting algorithms with step-by-step visualization
-          - Real-time controls and speed adjustment
-          - Educational complexity information
-          - Professional three-panel interface
+          ### 🔒 Security
+          - **SHA256 Checksum**: `Algorithm-Visualizer.exe.sha256` (for file verification)
+          - **File size**: ~11MB standalone executable
+          - **No dependencies**: Works on any Windows machine
           
-          Perfect for computer science education and algorithm learning!
+          ### ✨ What's Included
+          Interactive sorting algorithm visualizer featuring:
+          - **5 sorting algorithms** with step-by-step visualization
+          - **Real-time controls** and speed adjustment  
+          - **Educational content** with complexity information
+          - **Professional interface** with three-panel design
+          
+          Perfect for computer science students, educators, and algorithm learning!
