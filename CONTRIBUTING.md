@@ -51,7 +51,7 @@ This project is committed to providing a welcoming and inclusive experience for 
 ### Setup Instructions
 ```bash
 # Clone your fork
-git clone https://github.com/yourusername/Algorithm-Visualizer.git
+git clone https://github.com/Rblea97/Algorithm-Visualizer.git
 cd Algorithm-Visualizer
 
 # Create virtual environment (recommended)
@@ -87,7 +87,7 @@ This is an educational project. All contributions should:
 - **Clean Code**: Follow Python best practices and PEP 8
 - **Type Hints**: Include type annotations for all functions
 - **Documentation**: Add comprehensive docstrings
-- **Performance**: Maintain 60fps animation target
+- **Performance**: Maintain smooth animation performance
 - **Testing**: Include tests for new functionality
 
 ### Before Contributing
@@ -269,7 +269,7 @@ def example_function(param1: int, param2: str) -> bool:
 - **Consistency**: Follow existing design patterns
 - **Accessibility**: Ensure clear visual hierarchy and contrast
 - **Educational Focus**: Prioritize learning over aesthetics
-- **Performance**: Maintain smooth 60fps animations
+- **Performance**: Maintain consistently smooth animations
 
 ## 🧪 Testing
 

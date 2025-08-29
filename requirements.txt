@@ -1,0 +1,16 @@
+# Algorithm Visualizer - Runtime Dependencies
+#
+# This application uses only Python standard library modules.
+# No external dependencies are required for runtime.
+#
+# The following modules are used (all part of Python standard library):
+# - tkinter (GUI framework)
+# - typing (type hints)
+# - abc (abstract base classes)
+# - time (timing utilities)
+# - logging (logging framework)
+# - sys (system interface)
+# - os (operating system interface)
+# - random (random number generation)
+#
+# For development dependencies, see requirements-dev.txt

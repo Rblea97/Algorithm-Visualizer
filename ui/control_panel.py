@@ -2,11 +2,6 @@ import tkinter as tk
 from tkinter import ttk
 import random
 from typing import List, Callable, Optional
-import sys
-import os
-
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
 from utils import (
     COLORS,
     CONTROL_PANEL_WIDTH,

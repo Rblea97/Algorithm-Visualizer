@@ -40,9 +40,21 @@ jobs:
       run: |
         mypy . --ignore-missing-imports --show-error-codes || echo "Type checking completed with warnings"
         
-    - name: Test with pytest
+    - name: Test with pytest and coverage
       run: |
-        pytest --verbose || echo "Tests completed"
+        pytest --verbose --cov=. --cov-report=xml || echo "Tests completed"
+        
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v3
+      if: matrix.python-version == '3.11'
+      with:
+        file: ./coverage.xml
+        fail_ci_if_error: false
+        
+    - name: Security audit with pip-audit
+      run: |
+        pip install pip-audit
+        pip-audit --format=json || echo "Security audit completed"
         
     - name: Test application imports
       run: |

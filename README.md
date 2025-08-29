@@ -64,7 +64,7 @@ A sorting algorithm visualizer built with Python and tkinter, featuring smooth a
 ### 🎓 **Educational Excellence**
 - **5 sorting algorithms** with step-by-step visualization
 - **Algorithm complexity information** (time/space)
-- **Progress tracking** with detailed operation descriptions
+- **Progress tracking** with operation descriptions
 - **Flexible input options**: random generation or custom arrays
 
 ### 🛡️ **Robust Engineering & Quality**
@@ -100,7 +100,7 @@ A sorting algorithm visualizer built with Python and tkinter, featuring smooth a
 - **Modular package structure** with clear dependencies
 - **Comprehensive documentation** for users and developers
 - **Version control ready** with proper .gitignore and project files
-- **Distribution ready** with setup.py and requirements.txt
+- **Distribution ready** with setup.py and requirements-dev.txt
 
 ---
 
@@ -225,13 +225,31 @@ mypy .
 ruff check .
 ```
 
+### **Binary Assets Notice**
+⚠️ **Repository Size Optimization**: The `screenshots/` directory contains video files (`.mp4`) and animated GIFs that increase repository size. For production use, consider:
+- Using Git LFS for media files
+- Hosting large assets externally (GitHub Releases, CDN)
+- Converting to smaller formats or static images
+
+Current media files:
+- `demo.gif`, `bubble_sort_demo.mp4`, `algorithm_comparison.mp4`, `interactive_features.mp4`
+
 ---
 
 ## 🧪 Testing
 
-The application includes comprehensive validation:
+The application includes a comprehensive test suite:
 
 ```bash
+# Run all tests
+python -m pytest tests/ -v
+
+# Run specific test modules
+python -m pytest tests/test_sorting_algorithms.py -v      # Algorithm correctness tests
+python -m pytest tests/test_input_validator.py -v         # Input validation tests  
+python -m pytest tests/test_animation_controller.py -v    # Animation system tests
+python -m pytest tests/test_ui_integration.py -v          # UI integration tests
+
 # Basic functionality test
 python main.py
 
@@ -240,24 +258,24 @@ python -c "from algorithms import ALGORITHMS; print('All algorithms loaded succe
 ```
 
 **Test Coverage Includes:**
-- ✅ Algorithm correctness validation
-- ✅ UI component initialization  
-- ✅ Input validation edge cases
-- ✅ Animation system performance
-- ✅ Error handling scenarios
+- ✅ **Algorithm correctness**: All sorting algorithms tested for correctness, edge cases, and step generation
+- ✅ **Input validation**: Security testing including malicious input handling, buffer overflow attempts, and edge cases
+- ✅ **Animation system**: State management, timing control, callback functionality, and resource cleanup
+- ✅ **UI integration**: Component interaction, callback system, and error handling
+- ✅ **Security validation**: Protection against injection attempts, malformed input, and invalid data
 
 ### **Input Validation Testing**
 ```bash
-# Run input validation tests
+# Run comprehensive input validation tests
 python -m pytest tests/test_input_validator.py -v
 
 # Test malformed input handling
 python -c "
 from utils.input_validator import InputValidator
-test_inputs = ['abc,def,ghi', '101,102,103', '1,' * 100]
+test_inputs = ['abc,def,ghi', '101,102,103', '1,' * 100, '<script>alert(1)</script>']
 for inp in test_inputs:
     valid, _, error = InputValidator.validate_input(inp)
-    print(f'Input rejected: {not valid}')
+    print(f'Input: {inp[:20]}... Rejected: {not valid}')
 "
 ```
 
@@ -291,7 +309,12 @@ Algorithm_visualizer/
 │   ├── ⚙️ constants.py        # Application constants & config
 │   ├── 🎬 animation_controller.py # Animation timing & control
 │   └── ✅ input_validator.py   # Input validation & sanitization
-├── 📄 requirements.txt        # Dependency specification
+├── 📁 tests/                  # Comprehensive test suite
+│   ├── 🧪 test_sorting_algorithms.py    # Algorithm correctness tests
+│   ├── 🔒 test_input_validator.py       # Security & validation tests
+│   ├── ⚡ test_animation_controller.py  # Animation system tests
+│   └── 🖥️ test_ui_integration.py       # UI integration tests
+├── 📄 requirements-dev.txt    # Development dependencies
 ├── 📄 setup.py               # Package configuration
 ├── 📄 .gitignore             # Version control exclusions
 └── 📚 Documentation/          # Comprehensive guides
@@ -403,7 +426,7 @@ This project demonstrates professional software development practices and is des
 - Extensible architecture supporting future enhancements
 
 ### **⚡ Performance Engineering**
-- 60fps animation system optimization
+- Smooth animation system optimization
 - Non-blocking UI with proper threading concepts
 - Memory-efficient data structure usage
 - Real-time user interaction handling

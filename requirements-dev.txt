@@ -7,7 +7,7 @@
 # Run the application with: python main.py
 # 
 # DEVELOPMENT DEPENDENCIES (optional):
-# Install with: pip install -r requirements.txt
+# Install with: pip install -r requirements-dev.txt
 
 # Testing
 pytest>=7.0.0
@@ -20,3 +20,6 @@ mypy>=1.0.0
 
 # Linting
 ruff>=0.0.280
+
+# Coverage
+pytest-cov>=4.0.0

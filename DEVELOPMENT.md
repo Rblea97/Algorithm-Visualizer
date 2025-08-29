@@ -11,7 +11,7 @@ This document outlines the development practices, tools, and workflows used in t
 ### **Core Principles**
 - **Code Quality First**: Readable, maintainable, and well-documented code
 - **Test-Driven Development**: Comprehensive testing at all levels
-- **Performance Optimization**: 60fps animations with minimal resource usage
+- **Performance Optimization**: Smooth animations with minimal resource usage
 - **User-Centered Design**: Educational value and intuitive user experience
 - **Professional Standards**: Industry best practices and clean architecture
 
@@ -19,7 +19,7 @@ This document outlines the development practices, tools, and workflows used in t
 - **Type Safety**: Complete type hints throughout the codebase
 - **Documentation**: Comprehensive docstrings and architectural documentation
 - **Error Handling**: Graceful degradation and user-friendly error messages
-- **Performance**: Sub-100ms response times and 60fps animations
+- **Performance**: Sub-100ms response times and smooth animations
 - **Accessibility**: Clear visual indicators and comprehensive user guidance
 
 ---
@@ -40,7 +40,7 @@ IDE with Python support (VSCode, PyCharm, etc.)
 ### **Development Installation**
 ```bash
 # Clone repository
-git clone https://github.com/yourusername/Algorithm-Visualizer.git
+git clone https://github.com/Rblea97/Algorithm-Visualizer.git
 cd Algorithm-Visualizer
 
 # Create virtual environment (recommended)

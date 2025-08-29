@@ -1,11 +1,6 @@
 import tkinter as tk
 from typing import List, Tuple, Callable, Dict, Any, Optional
-import sys
-import os
-
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
-from utils.constants import (
+from .constants import (
     FRAME_INTERVAL_MS,
     INTERPOLATION_FRAMES,
     ANIMATION_SPEED_DEFAULT,

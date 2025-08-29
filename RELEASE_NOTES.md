@@ -71,7 +71,7 @@ python main.py
 
 #### **Development Setup**
 ```bash
-pip install -r requirements.txt  # Optional dev dependencies
+pip install -r requirements-dev.txt  # Optional dev dependencies
 python -m pytest                # Run tests
 black .                          # Format code
 mypy .                           # Type checking

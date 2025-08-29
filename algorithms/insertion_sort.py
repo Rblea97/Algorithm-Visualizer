@@ -1,10 +1,5 @@
 from typing import List, Tuple
-import sys
-import os
-
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
-from algorithms.base_algorithm import SortingAlgorithm
+from .base_algorithm import SortingAlgorithm
 
 
 class InsertionSort(SortingAlgorithm):
@@ -23,6 +18,10 @@ class InsertionSort(SortingAlgorithm):
         steps = []
         arr_copy = arr.copy()
         n = len(arr_copy)
+
+        # Handle empty array
+        if n == 0:
+            return steps
 
         # First element is considered sorted
         steps.append(

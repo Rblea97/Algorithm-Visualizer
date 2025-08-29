@@ -9,6 +9,7 @@ import tkinter as tk
 from tkinter import messagebox
 import sys
 import time
+import logging
 from typing import Optional
 
 from algorithms import ALGORITHMS
@@ -22,6 +23,16 @@ from utils import (
     LEGEND_PANEL_WIDTH,
     AnimationController,
 )
+
+# Configure logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    handlers=[
+        logging.StreamHandler(),
+    ]
+)
+logger = logging.getLogger(__name__)
 
 
 class SortingVisualizerApp:
@@ -135,7 +146,7 @@ class SortingVisualizerApp:
             # Reset animation state
             self.animation_controller.reset()
 
-            print(f"Selected algorithm: {algorithm_name}")
+            logger.info(f"Selected algorithm: {algorithm_name}")
 
     def on_array_change(self, array: list):
         """Handle array data change."""
@@ -148,7 +159,7 @@ class SortingVisualizerApp:
         self.animation_controller.reset()
         self.legend_panel.clear_messages()
 
-        print(f"Array updated: {array}")
+        logger.info(f"Array updated with {len(array)} elements: {array}")
 
     def on_play(self):
         """Handle play button click."""
@@ -172,18 +183,18 @@ class SortingVisualizerApp:
             # Start animation
             self.animation_controller.play()
 
-            print(f"Started {self.current_algorithm} animation with {len(steps)} steps")
+            logger.info(f"Started {self.current_algorithm} animation with {len(steps)} steps")
 
         except Exception as e:
             messagebox.showerror(
                 "Animation Error", f"Failed to start animation: {str(e)}"
             )
-            print(f"Animation error: {e}")
+            logger.error(f"Animation error: {e}")
 
     def on_pause(self):
         """Handle pause button click."""
         self.animation_controller.pause()
-        print("Animation paused")
+        logger.info("Animation paused")
 
     def on_reset(self):
         """Handle reset button click."""
@@ -196,12 +207,12 @@ class SortingVisualizerApp:
         # Clear messages
         self.legend_panel.clear_messages()
 
-        print("Animation reset")
+        logger.info("Animation reset")
 
     def on_speed_change(self, speed: float):
         """Handle speed slider change."""
         self.animation_controller.set_speed(speed)
-        print(f"Speed changed to {speed}x")
+        logger.info(f"Animation speed changed to {speed}x")
 
     def on_animation_update(
         self,
@@ -243,7 +254,7 @@ class SortingVisualizerApp:
         # Update control panel
         self.control_panel.on_animation_complete()
 
-        print(f"Animation completed in {animation_time:.2f}s with {total} steps")
+        logger.info(f"Animation completed in {animation_time:.2f}s with {total} steps")
 
     def on_closing(self):
         """Handle application closing."""
@@ -256,12 +267,12 @@ class SortingVisualizerApp:
     def run(self):
         """Start the application main loop."""
         try:
-            print("Starting Sorting Algorithm Visualizer...")
+            logger.info("Starting Sorting Algorithm Visualizer application")
             self.root.mainloop()
         except KeyboardInterrupt:
-            print("Application interrupted by user")
+            logger.info("Application interrupted by user (KeyboardInterrupt)")
         except Exception as e:
-            print(f"Application error: {e}")
+            logger.error(f"Application error: {e}")
             messagebox.showerror("Application Error", f"An error occurred: {str(e)}")
         finally:
             self.on_closing()
@@ -273,7 +284,7 @@ def main():
         app = SortingVisualizerApp()
         app.run()
     except Exception as e:
-        print(f"Failed to start application: {e}")
+        logger.error(f"Failed to start application: {e}")
         if "--debug" in sys.argv:
             raise
         return 1

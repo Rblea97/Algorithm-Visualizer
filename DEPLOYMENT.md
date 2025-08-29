@@ -129,7 +129,7 @@ pytest tests/test_input_validator.py -v
 ### **Quick Start Installation**
 ```bash
 # Option 1: Direct Python Execution (Requires Python 3.8+)
-git clone https://github.com/yourusername/Algorithm-Visualizer.git
+git clone https://github.com/Rblea97/Algorithm-Visualizer.git
 cd Algorithm-Visualizer
 python main.py
 
@@ -178,7 +178,7 @@ The application requires no external configuration files. All settings are manag
 ### **Application Performance**
 - **Startup Time**: ~2-3 seconds on modern systems
 - **Memory Usage**: ~50-100 MB during operation
-- **Animation Performance**: Optimized for 60fps on educational datasets (10-50 elements)
+- **Animation Performance**: Smooth animations optimized for educational datasets (10-50 elements)
 - **Cross-Platform**: Consistent performance across Windows, macOS, and Linux
 
 ### **Development Performance**
