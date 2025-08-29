@@ -106,24 +106,7 @@ A sorting algorithm visualizer built with Python and tkinter, featuring smooth a
 
 ## 🚀 Quick Start
 
-### **Option 1: Download Windows Executable (Recommended)**
-
-**📥 Step-by-Step Download:**
-
-1. **Go to [Actions](https://github.com/Rblea97/Algorithm-Visualizer/actions)** 
-2. **Click the latest green ✅ workflow run** (should say "CI")
-3. **Scroll down to "Artifacts"** section at the bottom
-4. **Click "Algorithm-Visualizer-Windows"** to download the zip file
-5. **Extract the zip file** - you'll get `Algorithm-Visualizer.exe`
-6. **Double-click `Algorithm-Visualizer.exe`** to run (no Python needed!)
-
-> **💡 Tip**: The executable is ~11MB and works on any Windows machine without installing Python.
-
-**Alternative - Via Releases:**
-- Check [Releases](https://github.com/Rblea97/Algorithm-Visualizer/releases) for tagged versions
-- Download the `.exe` file directly from the release assets
-
-### **Option 2: Run from Source**
+### **Run from Source**
 ```bash
 # Clone the repository
 git clone https://github.com/Rblea97/Algorithm-Visualizer.git
@@ -141,19 +124,11 @@ python main.py
 3. ▶️ Press Play to start the visualization
 4. 🎛️ Adjust speed in real-time with the slider
 
-### **🛠️ Troubleshooting**
-
-**Windows Executable Issues:**
-- **Antivirus blocking?** → Some antivirus software may flag unsigned executables. Add to exclusions or download from trusted source.
-- **Won't start?** → Right-click the .exe → "Run as administrator"
-- **Missing files?** → Make sure to extract the full zip file, don't run from inside the zip
-- **Slow startup?** → First launch may take 10-15 seconds as Windows loads the app
-
-**System Requirements:**
-- **Windows 7/8/10/11** (64-bit)
-- **~50MB disk space** for extraction and runtime
-- **No Python installation needed** for executable
-- **Internet not required** - runs completely offline
+### **System Requirements**
+- **Python 3.8 or higher**
+- **tkinter** (included with Python)
+- **Operating System**: Windows, macOS, or Linux
+- **No external dependencies** - uses Python standard library only
 
 ---
 

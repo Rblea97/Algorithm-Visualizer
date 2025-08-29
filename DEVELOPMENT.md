@@ -512,9 +512,8 @@ def profile_algorithm(algorithm, array):
 
 ### **Application Packaging**
 ```bash
-# Create executable with PyInstaller
-pip install pyinstaller
-pyinstaller --onefile --windowed main.py
+# Create development package
+pip install -e .
 
 # Alternative: Create distribution package
 python setup.py sdist bdist_wheel
@@ -530,7 +529,7 @@ python setup.py sdist bdist_wheel
 ### **Distribution Options**
 - **Source Distribution**: `python setup.py sdist`
 - **Wheel Distribution**: `python setup.py bdist_wheel`
-- **Executable**: PyInstaller for standalone executable
+- **Development Installation**: `pip install -e .`
 - **Docker**: Container-based distribution (future enhancement)
 
 ---

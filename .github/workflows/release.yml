@@ -7,60 +7,39 @@ on:
 
 jobs:
   create-release:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     
     steps:
     - uses: actions/checkout@v4
-    
-    - name: Set up Python 3.11
-      uses: actions/setup-python@v4
-      with:
-        python-version: "3.11"
-    
-    - name: Install PyInstaller
-      run: |
-        python -m pip install --upgrade pip
-        pip install pyinstaller
-        
-    - name: Build Windows executable
-      run: |
-        pyinstaller --onefile --windowed --name "Algorithm-Visualizer" main.py
-        
-    - name: Generate checksum
-      run: |
-        certutil -hashfile "dist/Algorithm-Visualizer.exe" SHA256 > "dist/Algorithm-Visualizer.exe.sha256"
         
     - name: Create Release
       uses: softprops/action-gh-release@v1
       with:
-        files: |
-          dist/Algorithm-Visualizer.exe
-          dist/Algorithm-Visualizer.exe.sha256
         body: |
           ## 🚀 Algorithm Visualizer ${{ github.ref_name }}
           
-          ### 📥 How to Download & Run
+          ### 🚀 How to Run
           
-          **For Windows Users (Recommended):**
-          1. **Download** `Algorithm-Visualizer.exe` below ⬇️
-          2. **Save** the file to your computer (Downloads folder is fine)
-          3. **Double-click** the .exe file to run immediately
-          4. **No installation needed** - it runs directly!
+          **Requirements**: Python 3.8 or higher
           
-          **For Developers:**
-          - Download the source code zip
-          - Requires Python 3.8+ - run `python main.py`
+          ```bash
+          # Download source code
+          git clone https://github.com/Rblea97/Algorithm-Visualizer.git
+          cd Algorithm-Visualizer
           
-          ### 🔒 Security
-          - **SHA256 Checksum**: `Algorithm-Visualizer.exe.sha256` (for file verification)
-          - **File size**: ~11MB standalone executable
-          - **No dependencies**: Works on any Windows machine
+          # Run the application
+          python main.py
+          ```
           
-          ### ✨ What's Included
+          ### ✨ What's New
           Interactive sorting algorithm visualizer featuring:
           - **5 sorting algorithms** with step-by-step visualization
           - **Real-time controls** and speed adjustment  
           - **Educational content** with complexity information
-          - **Professional interface** with three-panel design
+          - **Professional three-panel interface**
           
-          Perfect for computer science students, educators, and algorithm learning!
+          ### 🎯 Perfect For
+          - Computer science students learning algorithms
+          - Educators teaching sorting concepts
+          - Algorithm visualization and comparison
+          - Interview preparation and technical demonstrations

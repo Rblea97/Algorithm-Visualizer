@@ -49,38 +49,3 @@ jobs:
         python -c "import main; print('✓ Application imports successfully')"
         python -c "from algorithms import ALGORITHMS; print(f'✓ Loaded {len(ALGORITHMS)} algorithms')"
         python -c "from ui import ControlPanel, VisualizationCanvas, LegendPanel; print('✓ UI components import successfully')"
-
-  build-executable:
-    runs-on: windows-latest
-    needs: test
-    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-    
-    steps:
-    - uses: actions/checkout@v4
-    
-    - name: Set up Python 3.11
-      uses: actions/setup-python@v4
-      with:
-        python-version: "3.11"
-    
-    - name: Install PyInstaller
-      run: |
-        python -m pip install --upgrade pip
-        pip install pyinstaller
-        
-    - name: Build Windows executable
-      run: |
-        pyinstaller --onefile --windowed --name "Algorithm-Visualizer" main.py
-        
-    - name: Generate checksum
-      run: |
-        certutil -hashfile "dist/Algorithm-Visualizer.exe" SHA256 > "dist/Algorithm-Visualizer.exe.sha256"
-        
-    - name: Upload executable artifact
-      uses: actions/upload-artifact@v4
-      with:
-        name: Algorithm-Visualizer-Windows
-        path: |
-          dist/Algorithm-Visualizer.exe
-          dist/Algorithm-Visualizer.exe.sha256
-        retention-days: 90
