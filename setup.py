@@ -18,7 +18,7 @@ setup(
     url="https://github.com/Rblea97/Algorithm-Visualizer",
     packages=find_packages(),
     classifiers=[
-        "Development Status :: 5 - Production/Stable",
+        "Development Status :: 4 - Beta",
         "Intended Audience :: Education",
         "Topic :: Education",
         "Topic :: Scientific/Engineering :: Visualization",

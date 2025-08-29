@@ -11,16 +11,17 @@ from unittest.mock import Mock, MagicMock, patch
 from ui import ControlPanel, VisualizationCanvas, LegendPanel
 from algorithms import ALGORITHMS
 from utils import InputValidator
+from .conftest import HeadlessTestMixin
 
 
-class TestUIIntegration:
+@pytest.mark.gui
+class TestUIIntegration(HeadlessTestMixin):
     """Integration tests for UI components."""
     
     def setup_method(self):
         """Setup test environment."""
-        # Create root window (hidden)
-        self.root = tk.Tk()
-        self.root.withdraw()
+        # Create safe root window
+        self.root = self.create_safe_root()
         
         # Create test frames for each panel
         self.control_frame = tk.Frame(self.root)
@@ -29,11 +30,8 @@ class TestUIIntegration:
     
     def teardown_method(self):
         """Clean up after tests."""
-        try:
-            if hasattr(self, 'root'):
-                self.root.destroy()
-        except tk.TclError:
-            pass  # May already be destroyed
+        if hasattr(self, 'root'):
+            self.cleanup_root(self.root)
     
     def test_control_panel_creation(self):
         """Test ControlPanel can be created without errors."""
@@ -142,13 +140,13 @@ class TestUIIntegration:
             pytest.fail(f"clear_messages failed: {e}")
 
 
-class TestUIComponentInteraction:
+@pytest.mark.gui
+class TestUIComponentInteraction(HeadlessTestMixin):
     """Test interactions between UI components."""
     
     def setup_method(self):
         """Setup test environment with all components."""
-        self.root = tk.Tk()
-        self.root.withdraw()
+        self.root = self.create_safe_root()
         
         # Create frames
         self.control_frame = tk.Frame(self.root)
@@ -165,11 +163,8 @@ class TestUIComponentInteraction:
         
     def teardown_method(self):
         """Clean up."""
-        try:
-            if hasattr(self, 'root'):
-                self.root.destroy()
-        except tk.TclError:
-            pass
+        if hasattr(self, 'root'):
+            self.cleanup_root(self.root)
     
     def test_algorithm_selection_flow(self):
         """Test the flow from algorithm selection to visualization setup."""
@@ -250,17 +245,13 @@ class TestInputValidationIntegration:
     
     def setup_method(self):
         """Setup test environment."""
-        self.root = tk.Tk()
-        self.root.withdraw()
+        pass  # No GUI needed for input validation
         self.control_frame = tk.Frame(self.root)
     
     def teardown_method(self):
         """Clean up."""
-        try:
-            if hasattr(self, 'root'):
-                self.root.destroy()
-        except tk.TclError:
-            pass
+        if hasattr(self, 'root'):
+            self.cleanup_root(self.root)
     
     def test_input_validator_integration(self):
         """Test that InputValidator integrates properly with UI."""
@@ -309,24 +300,21 @@ class TestInputValidationIntegration:
         assert "2" in formatted
 
 
-class TestErrorHandling:
+@pytest.mark.gui  
+class TestErrorHandling(HeadlessTestMixin):
     """Test error handling in UI components."""
     
     def setup_method(self):
         """Setup test environment."""
-        self.root = tk.Tk()
-        self.root.withdraw()
+        self.root = self.create_safe_root()
         self.control_frame = tk.Frame(self.root)
         self.canvas_frame = tk.Frame(self.root)
         self.legend_frame = tk.Frame(self.root)
     
     def teardown_method(self):
         """Clean up."""
-        try:
-            if hasattr(self, 'root'):
-                self.root.destroy()
-        except tk.TclError:
-            pass
+        if hasattr(self, 'root'):
+            self.cleanup_root(self.root)
     
     def test_canvas_with_invalid_data(self):
         """Test canvas behavior with invalid data."""

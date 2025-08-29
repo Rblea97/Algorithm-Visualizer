@@ -212,8 +212,13 @@ python main.py
 # Install development dependencies (optional - for testing/linting only)
 pip install -r requirements-dev.txt
 
+# Install Git LFS for media files (required for contributors)
+git lfs install
+
 # Run tests
-python -m pytest
+python -m pytest                    # All tests
+python -m pytest -m "not gui"      # Skip GUI tests (for headless environments)
+python -m pytest -m gui            # Only GUI tests
 
 # Format code
 black .
@@ -225,14 +230,25 @@ mypy .
 ruff check .
 ```
 
-### **Binary Assets Notice**
-⚠️ **Repository Size Optimization**: The `screenshots/` directory contains video files (`.mp4`) and animated GIFs that increase repository size. For production use, consider:
-- Using Git LFS for media files
-- Hosting large assets externally (GitHub Releases, CDN)
-- Converting to smaller formats or static images
+### **Git LFS for Media Files**
+📦 **Large File Support**: This repository uses Git LFS for media files to optimize repository size:
 
-Current media files:
-- `demo.gif`, `bubble_sort_demo.mp4`, `algorithm_comparison.mp4`, `interactive_features.mp4`
+```bash
+# Install Git LFS (one time setup)
+git lfs install
+
+# Clone with LFS files
+git clone https://github.com/Rblea97/Algorithm-Visualizer.git
+cd Algorithm-Visualizer
+git lfs pull  # Downloads actual media files
+```
+
+**Media files managed by LFS**:
+- `*.mp4` - Video demonstrations 
+- `*.gif` - Animated screenshots
+- `*.exe` - Windows executable builds
+
+**Note**: Without Git LFS, you'll see pointer files instead of actual media content.
 
 ---
 
@@ -244,7 +260,14 @@ The application includes a comprehensive test suite:
 # Run all tests
 python -m pytest tests/ -v
 
-# Run specific test modules
+# Test categories and environments
+python -m pytest -m "not gui" -v          # Non-GUI tests (CI/headless safe)
+python -m pytest -m gui -v                # GUI tests (requires display)
+python -m pytest -m unit -v               # Fast unit tests only
+python -m pytest -m integration -v        # Integration tests
+python -m pytest -m security -v           # Security validation tests
+
+# Run specific test modules  
 python -m pytest tests/test_sorting_algorithms.py -v      # Algorithm correctness tests
 python -m pytest tests/test_input_validator.py -v         # Input validation tests  
 python -m pytest tests/test_animation_controller.py -v    # Animation system tests

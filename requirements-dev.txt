@@ -11,6 +11,8 @@
 
 # Testing
 pytest>=7.0.0
+pytest-timeout>=2.0.0      # Prevent hanging tests
+pytest-xvfb>=3.0.0         # Virtual display for GUI tests in CI (Linux only)
 
 # Code formatting 
 black>=22.0.0

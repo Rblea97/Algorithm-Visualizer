@@ -1,0 +1,17 @@
+# Git LFS tracking for large media files
+# This reduces repository size and improves clone performance
+
+# Video files
+*.mp4 filter=lfs diff=lfs merge=lfs -text
+*.avi filter=lfs diff=lfs merge=lfs -text
+*.mov filter=lfs diff=lfs merge=lfs -text
+
+# Large image files
+*.gif filter=lfs diff=lfs merge=lfs -text
+
+# Archive files (if any)
+*.zip filter=lfs diff=lfs merge=lfs -text
+*.tar.gz filter=lfs diff=lfs merge=lfs -text
+
+# Executable files (for Windows builds)
+*.exe filter=lfs diff=lfs merge=lfs -text

@@ -16,16 +16,17 @@ from utils.constants import (
     ANIMATION_SPEED_MAX,
     INTERPOLATION_FRAMES
 )
+from .conftest import HeadlessTestMixin
 
 
-class TestAnimationController:
+@pytest.mark.gui
+class TestAnimationController(HeadlessTestMixin):
     """Test cases for AnimationController functionality."""
     
     def setup_method(self):
         """Setup test environment before each test."""
-        # Create a minimal tkinter root for testing
-        self.root = tk.Tk()
-        self.root.withdraw()  # Hide the window
+        # Create a safe tkinter root for testing
+        self.root = self.create_safe_root()
         
         # Create mock callback
         self.mock_callback = Mock()
@@ -45,10 +46,7 @@ class TestAnimationController:
         if hasattr(self, 'controller'):
             self.controller.cleanup()
         if hasattr(self, 'root'):
-            try:
-                self.root.destroy()
-            except tk.TclError:
-                pass  # Root may already be destroyed
+            self.cleanup_root(self.root)
     
     def test_initialization(self):
         """Test controller initialization."""
@@ -211,13 +209,13 @@ class TestAnimationController:
         assert self.controller.is_playing
 
 
-class TestAnimationControllerIntegration:
+@pytest.mark.gui
+class TestAnimationControllerIntegration(HeadlessTestMixin):
     """Integration tests for AnimationController with mock UI updates."""
     
     def setup_method(self):
         """Setup test environment."""
-        self.root = tk.Tk()
-        self.root.withdraw()
+        self.root = self.create_safe_root()
         
         self.update_calls = []
         
@@ -242,10 +240,7 @@ class TestAnimationControllerIntegration:
         if hasattr(self, 'controller'):
             self.controller.cleanup()
         if hasattr(self, 'root'):
-            try:
-                self.root.destroy()
-            except tk.TclError:
-                pass
+            self.cleanup_root(self.root)
     
     def test_animation_data_structure(self):
         """Test that animation data is properly structured."""
@@ -307,13 +302,13 @@ class TestAnimationControllerIntegration:
         assert total == len(self.test_steps)
 
 
-class TestAnimationControllerErrorHandling:
+@pytest.mark.gui
+class TestAnimationControllerErrorHandling(HeadlessTestMixin):
     """Test error handling and edge cases."""
     
     def setup_method(self):
         """Setup test environment."""
-        self.root = tk.Tk()
-        self.root.withdraw()
+        self.root = self.create_safe_root()
         self.controller = AnimationController(self.root, Mock())
     
     def teardown_method(self):
@@ -321,10 +316,7 @@ class TestAnimationControllerErrorHandling:
         if hasattr(self, 'controller'):
             self.controller.cleanup()
         if hasattr(self, 'root'):
-            try:
-                self.root.destroy()
-            except tk.TclError:
-                pass
+            self.cleanup_root(self.root)
     
     def test_malformed_steps(self):
         """Test handling of malformed animation steps."""
