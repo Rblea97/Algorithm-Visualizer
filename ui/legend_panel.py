@@ -126,6 +126,22 @@ class LegendPanel:
         # Statistics
         self.stats_frame.place(x=10, y=y, width=LEGEND_PANEL_WIDTH - 20, height=100)
         self.stats_label.pack(fill="both", expand=True)
+        
+        # Algorithm info (add below stats)
+        y += 110
+        self.algo_frame = tk.Frame(self.frame, bg=COLORS["PANEL_BG"], relief="solid", bd=1)
+        self.algo_frame.place(x=10, y=y, width=LEGEND_PANEL_WIDTH - 20, height=80)
+        
+        self.algo_label = tk.Label(
+            self.algo_frame,
+            text="",
+            bg=COLORS["PANEL_BG"],
+            fg=COLORS["TEXT"],
+            font=("Arial", 8),
+            wraplength=LEGEND_PANEL_WIDTH - 30,
+            justify="left",
+        )
+        self.algo_label.pack(fill="both", expand=True, padx=5, pady=5)
 
     def show_completion_message(self, message: str = "Sort Complete!"):
         """
@@ -166,6 +182,28 @@ class LegendPanel:
         """Clear completion message and statistics."""
         self.completion_label.config(text="")
         self.stats_label.config(text="")
+        
+    def show_algorithm_info(self, algorithm_instance):
+        """
+        Display algorithm complexity information.
+        
+        Args:
+            algorithm_instance: Instance of sorting algorithm
+        """
+        if algorithm_instance:
+            name = algorithm_instance.get_name()
+            time_complexity, space_complexity = algorithm_instance.get_complexity()
+            description = algorithm_instance.get_description()
+            
+            info_text = (
+                f"Algorithm: {name}\n"
+                f"Time: {time_complexity}\n"
+                f"Space: {space_complexity}\n\n"
+                f"{description[:60]}..."
+            )
+            self.algo_label.config(text=info_text)
+        else:
+            self.algo_label.config(text="")
 
     def flash_completion(self):
         """Flash the completion message for celebratory effect."""
