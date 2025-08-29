@@ -24,7 +24,7 @@ jobs:
         
     - name: Build Windows executable
       run: |
-        pyinstaller Algorithm-Visualizer.spec
+        pyinstaller --onefile --windowed --name "Algorithm-Visualizer" main.py
         
     - name: Generate checksum
       run: |
