@@ -31,12 +31,8 @@ This guide provides comprehensive instructions for packaging, distributing, and 
 # Build Distribution Packages
 python setup.py sdist bdist_wheel
 
-# Upload to PyPI (if making public)
-pip install twine
-twine upload dist/*
-
-# Install from PyPI
-pip install algorithm-visualizer
+# Note: This project is designed for direct execution or local builds
+# PyPI publishing is not configured for this portfolio project
 ```
 
 ### **Development Package Installation**
@@ -318,8 +314,8 @@ git clone https://github.com/yourusername/Algorithm-Visualizer.git
 cd Algorithm-Visualizer
 python main.py
 
-# Option 2: pip Installation (when available on PyPI)
-pip install algorithm-visualizer
+# Option 2: Local Installation
+pip install -e .
 algorithm-visualizer
 
 # Option 3: Download Pre-built Executable
