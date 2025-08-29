@@ -1,0 +1,22 @@
+# Algorithm Visualizer - Python Requirements
+# 
+# RUNTIME DEPENDENCIES: None
+# This application uses only Python standard library modules.
+# Python 3.8 or higher is required.
+#
+# Run the application with: python main.py
+# 
+# DEVELOPMENT DEPENDENCIES (optional):
+# Install with: pip install -r requirements.txt
+
+# Testing
+pytest>=7.0.0
+
+# Code formatting 
+black>=22.0.0
+
+# Type checking
+mypy>=1.0.0
+
+# Linting
+ruff>=0.0.280
