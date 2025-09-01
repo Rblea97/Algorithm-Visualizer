@@ -32,6 +32,7 @@ MANIFEST
 #  before PyInstaller builds the exe, so as to inject date/other infos into it.
 *.manifest
 *.spec
+Algorithm-Visualizer.spec
 
 # Installer logs
 pip-log.txt
@@ -149,3 +150,8 @@ demo/
 debug_*
 test_*
 *.tmp
+
+# Large media files (keep only essential screenshots)
+screenshots/*.mp4
+screenshots/*.mov
+screenshots/*.avi

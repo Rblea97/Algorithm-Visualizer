@@ -33,13 +33,8 @@ A sorting algorithm visualizer built with Python and tkinter, featuring smooth a
 ![Algorithm Visualizer Interface](screenshots/main_interface.png)
 *Clean three-panel design with intuitive controls and real-time visualization*
 
-### Interactive Features Demo
-
-**[📹 Interactive Features Demo](screenshots/interactive_features.mp4)** *(Download to view)* - Interactive controls, algorithm selection, and real-time speed adjustment
-
-### Algorithm Demos
-- **[📹 Bubble Sort Demo](screenshots/bubble_sort_demo.mp4)** *(Download to view)* - Basic sorting visualization
-- **[📹 Algorithm Comparison](screenshots/algorithm_comparison.mp4)** *(Download to view)* - Performance comparison between algorithms
+### Key Features Showcase
+The interface provides intuitive controls for algorithm selection, real-time speed adjustment, and educational insights through the clean three-panel design.
 
 ---
 
@@ -159,14 +154,11 @@ python main.py
 
 ### **Visual Demonstrations**
 
-| Algorithm Selection | Animation in Progress | Completion State |
-|----|----|----| 
-| ![Algorithm Selection](screenshots/algorithm_selection.png) | ![Animation](screenshots/bubble_sort_animation.png) | ![Complete](screenshots/sort_complete.png) |
-| *Dropdown shows all 5 algorithms* | *Real-time visualization with color coding* | *Success indicators and statistics* |
+*The interface showcases algorithm selection, real-time visualization with color coding, and comprehensive completion statistics*
 
-### **Algorithm Comparison Demo**
+### **Algorithm Comparison Features**
 
-**[📹 Algorithm Comparison Demo](screenshots/algorithm_comparison.mp4)** *(Download to view)* - Performance comparison: Bubble Sort vs Quick Sort on worst-case input
+The application enables real-time performance comparison between different sorting algorithms, allowing users to observe efficiency differences on various input types.
 
 ### **Three-Panel Design**
 ```
